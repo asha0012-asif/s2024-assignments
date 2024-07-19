@@ -1,5 +1,15 @@
 # S2024 MAD9124 Assignments Collection
 
+###### Status: WIP
+
+## Assignment 2: CRUD API with MongoDB
+
+This is an updated API which allows users to perform CRUD operations
+not only golf rounds but also on golf courses and holes as well.
+
+This covers my learning of dealing with CRUD operations in the scope
+of using Mongoose and also learning to use MongoDB.
+
 ###### Status: Complete
 
 ## Assignment 1: Basic CRUD API
@@ -10,5 +20,7 @@ This covers my learning of basic project structure with the backend language Nod
 
 ### Languages/Frameworks Used
 
-- NodeJS
-- ExpressJS
+-   NodeJS
+-   ExpressJS
+-   MongoDB
+-   Mongoose
