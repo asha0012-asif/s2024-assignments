@@ -1,6 +1,7 @@
 const { Router } = require("express");
 
 const roundsController = require("../controllers/rounds");
+const isValidObjectId = require("../middleware/validateObjectID");
 
 const roundsRouter = Router();
 
@@ -11,15 +12,19 @@ roundsRouter.post("/", roundsController.createRound);
 roundsRouter.get("/", roundsController.getAllRounds);
 
 // R - Read one
-roundsRouter.get("/:id", roundsController.getRoundByID);
+roundsRouter.get("/:id", isValidObjectId, roundsController.getRoundByID);
 
 // U - Update (replace)
-roundsRouter.put("/:id", roundsController.updateRound);
+roundsRouter.put("/:id", isValidObjectId, roundsController.updateRound);
 
 // U - Update (partial)
-roundsRouter.patch("/:id", roundsController.updateRoundPartially);
+roundsRouter.patch(
+    "/:id",
+    isValidObjectId,
+    roundsController.updateRoundPartially
+);
 
 // D - Delete
-roundsRouter.delete("/:id", roundsController.deleteRound);
+roundsRouter.delete("/:id", isValidObjectId, roundsController.deleteRound);
 
 module.exports = roundsRouter;

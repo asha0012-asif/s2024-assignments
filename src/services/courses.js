@@ -1,36 +1,72 @@
 const courses = require("../models/courses");
+const { NotFoundError, BadRequestError } = require("../utils/errors");
+
+const validateCourseID = (id, course) => {
+    if (!course)
+        throw new NotFoundError(`No courses found with an id of ${id}`);
+
+    return course;
+};
 
 const createCourse = async (newCourse) => {
-    const course = await courses.create(newCourse);
-    return course;
+    try {
+        const course = await courses.create(newCourse);
+
+        if (!course) throw new BadRequestError("Enter valid course details");
+
+        return course;
+    } catch (error) {
+        throw error;
+    }
 };
 
 const getAllCourses = async () => await courses.find();
 
 const getCourseByID = async (id) => {
-    const course = await courses.findById(id);
-    return course;
+    try {
+        const course = await courses.findById(id);
+        return validateCourseID(id, course);
+    } catch (error) {
+        throw error;
+    }
 };
 
 const updateCourse = async (id, updatedCourse) => {
-    const course = await courses.findByIdAndUpdate(id, updatedCourse, {
-        new: true,
-    });
+    try {
+        if (!updatedCourse.name || !updatedCourse.holes)
+            throw new BadRequestError(
+                "Cannot update course without name or holes"
+            );
 
-    return course;
+        const course = await courses.findByIdAndUpdate(id, updatedCourse, {
+            new: true,
+        });
+
+        return validateCourseID(id, course);
+    } catch (error) {
+        throw error;
+    }
 };
 
 const updateCoursePartially = async (id, updatedValue) => {
-    const course = await courses.findByIdAndUpdate(id, updatedValue, {
-        new: true,
-    });
+    try {
+        const course = await courses.findByIdAndUpdate(id, updatedValue, {
+            new: true,
+        });
 
-    return course;
+        return validateCourseID(id, course);
+    } catch (error) {
+        throw error;
+    }
 };
 
 const deleteCourse = async (id) => {
-    const course = await courses.findByIdAndDelete(id);
-    return course;
+    try {
+        const course = await courses.findByIdAndDelete(id);
+        return validateCourseID(id, course);
+    } catch (error) {
+        throw error;
+    }
 };
 
 module.exports = {

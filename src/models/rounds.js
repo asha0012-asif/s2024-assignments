@@ -18,8 +18,13 @@ const roundSchema = new Schema(
         scores: {
             type: [Number],
             required: true,
-            minLength: 18,
-            maxLength: 18,
+
+            validate: {
+                validator: function (arr) {
+                    return arr.length === 18;
+                },
+                message: "Scores array must have exactly 18 elements.",
+            },
         },
     },
     {

@@ -1,4 +1,4 @@
-const { model, Schema, Types } = require("mongoose");
+const { model, Schema } = require("mongoose");
 const holeSchema = require("./holes");
 
 const courseSchema = new Schema(
@@ -13,8 +13,11 @@ const courseSchema = new Schema(
         holes: {
             type: [holeSchema],
             required: true,
-            minLength: 18,
-            maxLength: 18,
+
+            validate: {
+                validator: (holes) => holes.length === 18,
+                message: "The holes array must have exactly 18 elements.",
+            },
         },
     },
     {

@@ -1,17 +1,5 @@
 const roundsService = require("../services/rounds");
 
-// const validateRound = (round) => {
-//     if (
-//         !round.course ||
-//         !round.username ||
-//         !round.scores ||
-//         round.scores.length !== 18
-//     ) {
-//         return false;
-//     }
-//     return true;
-// };
-
 const createRound = async (req, res, next) => {
     try {
         const newRound = await roundsService.createRound(req.body);
@@ -53,6 +41,15 @@ const updateRound = async (req, res, next) => {
     try {
         const { id } = req.params;
         const updatedRound = await roundsService.updateRound(id, req.body);
+
+        console.log(
+            "update data: ",
+            id,
+            "\nbody",
+            req.body,
+            "\ndata: ",
+            updatedRound
+        );
 
         res.status(200).json({
             data: updatedRound,

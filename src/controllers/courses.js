@@ -1,17 +1,5 @@
 const coursesService = require("../services/courses");
 
-// const validateCourse = (course) => {
-//     if (
-//         !course.course ||
-//         !course.username ||
-//         !course.scores ||
-//         course.scores.length !== 18
-//     ) {
-//         return false;
-//     }
-//     return true;
-// };
-
 const createCourse = async (req, res, next) => {
     try {
         const newCourse = await coursesService.createCourse(req.body);

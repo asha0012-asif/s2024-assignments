@@ -1,6 +1,7 @@
 const { Router } = require("express");
 
 const coursesController = require("../controllers/courses");
+const isValidObjectId = require("../middleware/validateObjectID");
 
 const coursesRouter = Router();
 
@@ -11,15 +12,19 @@ coursesRouter.post("/", coursesController.createCourse);
 coursesRouter.get("/", coursesController.getAllCourses);
 
 // R - Read one
-coursesRouter.get("/:id", coursesController.getCourseByID);
+coursesRouter.get("/:id", isValidObjectId, coursesController.getCourseByID);
 
 // U - Update (replace)
-coursesRouter.put("/:id", coursesController.updateCourse);
+coursesRouter.put("/:id", isValidObjectId, coursesController.updateCourse);
 
 // U - Update (partial)
-coursesRouter.patch("/:id", coursesController.updateCoursePartially);
+coursesRouter.patch(
+    "/:id",
+    isValidObjectId,
+    coursesController.updateCoursePartially
+);
 
 // D - Delete
-coursesRouter.delete("/:id", coursesController.deleteCourse);
+coursesRouter.delete("/:id", isValidObjectId, coursesController.deleteCourse);
 
 module.exports = coursesRouter;
