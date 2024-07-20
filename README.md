@@ -1,6 +1,6 @@
 # S2024 MAD9124 Assignments Collection
 
-###### Status: WIP
+###### Status: Complete
 
 ## Assignment 2: CRUD API with MongoDB
 
