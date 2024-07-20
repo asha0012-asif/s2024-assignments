@@ -1,4 +1,5 @@
 const { model, Schema, Types } = require("mongoose");
+const holeSchema = require("./holes");
 
 const courseSchema = new Schema(
     {
@@ -10,9 +11,7 @@ const courseSchema = new Schema(
         },
 
         holes: {
-            // type: Types.ObjectId,
-            // ref: "hole",
-            type: [Number], // TEMPORARY
+            type: [holeSchema],
             required: true,
             minLength: 18,
             maxLength: 18,

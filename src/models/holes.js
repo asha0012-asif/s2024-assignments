@@ -1,4 +1,4 @@
-const { model, Schema } = require("mongoose");
+const { Schema } = require("mongoose");
 
 const holeSchema = new Schema(
     {
@@ -19,7 +19,8 @@ const holeSchema = new Schema(
     {
         timestamps: true,
         versionKey: false,
+        _id: false,
     }
 );
 
-module.exports = model("hole", holeSchema);
+module.exports = holeSchema;
