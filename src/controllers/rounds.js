@@ -42,15 +42,6 @@ const updateRound = async (req, res, next) => {
         const { id } = req.params;
         const updatedRound = await roundsService.updateRound(id, req.body);
 
-        console.log(
-            "update data: ",
-            id,
-            "\nbody",
-            req.body,
-            "\ndata: ",
-            updatedRound
-        );
-
         res.status(200).json({
             data: updatedRound,
         });
