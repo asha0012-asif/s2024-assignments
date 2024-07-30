@@ -14,7 +14,8 @@ of using Mongoose and also learning to use MongoDB.
 
 ## Assignment 1: Basic CRUD API
 
-This is a basic API which allows users to read through golf rounds' data, read a specific golf round's data, create new golf rounds, update all or partial parts of a golf round data, and delete golf rounds.
+This is a basic API which allows users to read through golf rounds' data, read a specific golf round's data, create new golf rounds, update all or partial parts of a golf round data, and delete golf rounds. It uses mongoose to
+connect to mongodb.
 
 This covers my learning of basic project structure with the backend language NodeJS, and dealing with CRUD operations.
 
