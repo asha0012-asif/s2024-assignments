@@ -26,9 +26,10 @@ This is a basic API which allows users to read through golf rounds' data, read a
 
 This covers my learning of basic project structure with the backend language NodeJS, and dealing with CRUD operations.
 
-### Languages/Frameworks Used
+### Technologies Used
 
 -   NodeJS
 -   ExpressJS
 -   MongoDB
 -   Mongoose
+-   Google OAuth
