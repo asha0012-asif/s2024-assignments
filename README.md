@@ -2,6 +2,14 @@
 
 ###### Status: Complete
 
+## Assignment 3: API with Authentication
+
+This is an updated API which allows users to sign in / sign up using their Google Account.
+
+This covers my learning of dealing with authentication routes for Google.
+
+###### Status: Complete
+
 ## Assignment 2: CRUD API with MongoDB
 
 This is an updated API which allows users to perform CRUD operations

@@ -1,7 +1,7 @@
 const { Router } = require("express");
 
 const coursesController = require("../controllers/courses");
-const isValidObjectId = require("../middleware/validateObjectID");
+const isValidObjectId = require("../middlewares/validateObjectID");
 
 const coursesRouter = Router();
 

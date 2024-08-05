@@ -1,11 +1,5 @@
 const rounds = require("../models/rounds");
-const { NotFoundError, BadRequestError } = require("../utils/errors");
-
-const validateRoundID = (id, round) => {
-    if (!round) throw new NotFoundError(`No rounds found with an id of ${id}`);
-
-    return round;
-};
+const { BadRequestError } = require("../utils/errors");
 
 const createRound = async (newRound) => {
     const round = await rounds.create(newRound);
@@ -15,28 +9,27 @@ const createRound = async (newRound) => {
     return round;
 };
 
-const getAllRounds = async () => await rounds.find().populate("course");
+const getAllRounds = async () =>
+    await rounds.find().populate(["course", "user"]);
 
 const getRoundByID = async (id) => {
-    const round = await rounds.findById(id).populate("course");
+    const round = await rounds.findById(id).populate(["course", "user"]);
 
-    return validateRoundID(id, round);
+    return round;
 };
 
 const updateRound = async (id, updatedRound) => {
-    if (!updatedRound.username || !updatedRound.scores) {
-        throw new BadRequestError(
-            "Cannot update round without username or scores"
-        );
+    if (!updatedRound.scores) {
+        throw new BadRequestError("Cannot update round without scores");
     }
 
     const round = await rounds
         .findByIdAndUpdate(id, updatedRound, {
             new: true,
         })
-        .populate("course");
+        .populate(["course", "user"]);
 
-    return validateRoundID(id, round);
+    return round;
 };
 
 const updateRoundPartially = async (id, updatedValue) => {
@@ -44,15 +37,17 @@ const updateRoundPartially = async (id, updatedValue) => {
         .findByIdAndUpdate(id, updatedValue, {
             new: true,
         })
-        .populate("course");
+        .populate(["course", "user"]);
 
-    return validateRoundID(id, round);
+    return round;
 };
 
 const deleteRound = async (id) => {
-    const round = await rounds.findByIdAndDelete(id).populate("course");
+    const round = await rounds
+        .findByIdAndDelete(id)
+        .populate(["course", "user"]);
 
-    return validateRoundID(id, round);
+    return round;
 };
 
 module.exports = {

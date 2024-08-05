@@ -8,11 +8,10 @@ const roundSchema = new Schema(
             required: true,
         },
 
-        username: {
-            type: String,
+        user: {
+            type: Types.ObjectId,
+            ref: "User",
             required: true,
-            minLength: 3,
-            maxLength: 64,
         },
 
         scores: {
