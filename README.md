@@ -6,7 +6,7 @@
 
 This is an updated API which allows users to sign in / sign up using their Google Account.
 
-This covers my learning of dealing with authentication routes for Google.
+This covers my learning of dealing with authentication routes for Google and using JWTs.
 
 ###### Status: Complete
 
